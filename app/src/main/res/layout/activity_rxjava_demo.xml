@@ -1,0 +1,623 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center_horizontal">
+
+
+    <ScrollView
+        android:id="@+id/scrollView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center_horizontal">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center_horizontal"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="rxjava的基本概念和使用"
+                android:textColor="@android:color/black"
+                android:textSize="20sp"/>
+
+
+            <Button
+                android:id="@+id/btn_basic"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="rxjava的基本使用"
+                android:textAllCaps="false"/>
+
+            <Button
+                android:id="@+id/chain"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="rxjava的链式使用"
+                android:textAllCaps="false"/>
+
+            <Button
+                android:id="@+id/break_connect"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="中断观察者和被观察者之间的联系"
+                android:textAllCaps="false"/>
+
+            <Button
+                android:id="@+id/rxjava_threadcontrol"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="rxjava的线程控制(切换/调度)"
+                android:textAllCaps="false"/>
+
+
+            <Button
+                android:id="@+id/rxjava_backpressure"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="rxjava的背压策略Backpressure"
+                android:textAllCaps="false"/>
+
+            <Button
+                android:id="@+id/rxjava_simpleobservable"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="rxjava中的简化版本的Observable"
+                android:textAllCaps="false"/>
+
+            <Button
+                android:id="@+id/rxjava_compose"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="rxjava中compose的操作使用"
+                android:textAllCaps="false"/>
+
+            <Button
+                android:id="@+id/rxjava_hotandcoldObservable"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="rxjava中的Hot Observable 和 Cold Observable"
+                android:textAllCaps="false"/>
+
+            <Button
+                android:id="@+id/rxjava_subjectandprocessor"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="rxjava中的Subject和Processor"
+                android:textAllCaps="false"/>
+
+
+            <Button
+                android:id="@+id/rxjava_usedemo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="rxjava在安卓中的使用以及搭配rxjava封装的相关库的使用"
+                android:textAllCaps="false"/>
+
+            <Button
+                android:id="@+id/rxbus_demo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="rxjava封装的事件总线框架RxBus的使用"
+                android:textAllCaps="false"/>
+
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:background="#f00"/>
+
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="rxjava的基本的操作符"
+                android:textColor="@android:color/black"
+                android:textSize="20sp"/>
+
+
+            <Button
+                android:id="@+id/create"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="基本的创建操作符create()"
+                android:textAllCaps="false"/>
+
+            <Button
+                android:id="@+id/quick_create_just"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="快速创建操作符just()"
+                android:textAllCaps="false"/>
+
+
+            <Button
+                android:id="@+id/quick_create_from"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="快速创建操作符fromArray()/fromIterable()"
+                android:textAllCaps="false"/>
+
+
+            <Button
+                android:id="@+id/quick_create_extra"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="快速创建额外的操作符empty()/ error()/never()"
+                android:textAllCaps="false"/>
+
+            <Button
+                android:id="@+id/quick_create_defer"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="延迟创建操作符defer()"
+                android:textAllCaps="false"/>
+
+
+            <Button
+                android:id="@+id/quick_create_timer"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="延迟创建操作符timer()"
+                android:textAllCaps="false"/>
+
+            <Button
+                android:id="@+id/quick_create_interval"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="延迟创建操作符interval()"
+                android:textAllCaps="false"/>
+
+
+            <Button
+                android:id="@+id/quick_create_intervalrange"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="延迟创建操作符intervalRange()"
+                android:textAllCaps="false"/>
+
+            <Button
+                android:id="@+id/quick_create_range"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="创建操作符range() / rangeLong()"
+                android:textAllCaps="false"/>
+
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:background="#f00"/>
+
+            <Button
+                android:id="@+id/tranformer_map"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="变换操作符map()"
+                android:textAllCaps="false"/>
+
+            <Button
+                android:id="@+id/tranformer_flatMap"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="变换操作符flatMap()"
+                android:textAllCaps="false"/>
+
+
+            <Button
+                android:id="@+id/tranformer_concatMap"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="变换操作符concatMap()"
+                android:textAllCaps="false"/>
+
+            <Button
+                android:id="@+id/tranformer_buffer"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="缓冲操作符buffer()"
+                android:textAllCaps="false"/>
+
+            <Button
+                android:id="@+id/tranformer_switchmap"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="变化操作符switchMap()"
+                android:textAllCaps="false"/>
+
+            <Button
+                android:id="@+id/tranformer_flatmapiterable"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="变化操作符flatMapIterable()"
+                android:textAllCaps="false"/>
+
+            <Button
+                android:id="@+id/tranformer_concatmapeager"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="变化操作符concatMapEager()"
+                android:textAllCaps="false"/>
+
+            <Button
+                android:id="@+id/tranformer_mapdifferent"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="变化操作符flatMap() / SwitchMap() / concatMap() / concatMapEager()的区别"
+                android:textAllCaps="false"/>
+
+            <Button
+                android:id="@+id/tranformer_scan"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="变化操作符scan()"
+                android:textAllCaps="false"/>
+
+            <Button
+                android:id="@+id/tranformer_groupby"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="变化操作符groupBy()"
+                android:textAllCaps="false"/>
+
+            <Button
+                android:id="@+id/tranformer_window"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="变化操作符window()"
+                android:textAllCaps="false"/>
+
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:background="#f00"/>
+
+            <Button
+                android:id="@+id/conbine_concat"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="组合合并操作符concat()/concatArray()"
+                android:textAllCaps="false"/>
+
+            <Button
+                android:id="@+id/conbine_merge"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="组合合并操作符merge() / mergeArray()"
+                android:textAllCaps="false"/>
+
+            <Button
+                android:id="@+id/conbine_delayError"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="组合合并异常处理符 concatDelayErro() / mergeDelayError()"
+                android:textAllCaps="false"/>
+
+            <Button
+                android:id="@+id/conbine_zip"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="组合合并异常处理符 zip()"
+                android:textAllCaps="false"/>
+
+            <Button
+                android:id="@+id/conbine_combineLatest"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="组合合并操作符combineLatest()"
+                android:textAllCaps="false"/>
+
+            <Button
+                android:id="@+id/conbine_combineLatestDelayError"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="组合合并操作符combineLatestDelayError()"
+                android:textAllCaps="false"/>
+
+
+            <Button
+                android:id="@+id/conbine_reduce"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="组合合并操作符reduce()"
+                android:textAllCaps="false"/>
+
+            <Button
+                android:id="@+id/conbine_collect"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="组合合并操作符collect()"
+                android:textAllCaps="false"/>
+
+
+            <Button
+                android:id="@+id/conbine_startwith_startwitharray"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="追加操作符startWith()/startWithArray()"
+                android:textAllCaps="false"/>
+
+            <Button
+                android:id="@+id/conbine_count"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="统计操作符count()"
+                android:textAllCaps="false"/>
+
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:background="#f00"/>
+
+            <Button
+                android:id="@+id/func_subscribe"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="功能性操作符subscribe()"
+                android:textAllCaps="false"/>
+
+
+            <Button
+                android:id="@+id/func_delay"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="延迟操作符delay()"
+                android:textAllCaps="false"/>
+
+            <Button
+                android:id="@+id/func_do"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="事件整个生命周期操作符do()"
+                android:textAllCaps="false"/>
+
+            <Button
+                android:id="@+id/func_errorreturn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="错误处理符之onErrorReturn()"
+                android:textAllCaps="false"/>
+
+            <Button
+                android:id="@+id/func_errorResumeNext"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="错误处理符之onErrorResumeNext() /  onExceptionResumeNext()"
+                android:textAllCaps="false"/>
+
+
+            <Button
+                android:id="@+id/func_retry"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="错误处理符之retry()"
+                android:textAllCaps="false"/>
+
+
+            <Button
+                android:id="@+id/func_retryUntil"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="错误处理符之retryUntil()"
+                android:textAllCaps="false"/>
+
+            <Button
+                android:id="@+id/func_retryWhen"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="错误处理符之retryWhen()"
+                android:textAllCaps="false"/>
+
+
+            <Button
+                android:id="@+id/func_repeat"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="重复操作符之repeat()"
+                android:textAllCaps="false"/>
+
+
+            <Button
+                android:id="@+id/func_repeatWhen"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="重复操作符之repeatWhen()"
+                android:textAllCaps="false"/>
+
+
+            <Button
+                android:id="@+id/func_repeatUntil"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="重复操作符之repeatUntil()"
+                android:textAllCaps="false"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:background="#f00"/>
+
+            <Button
+                android:id="@+id/filter_filter"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="过滤操作符之filter()"
+                android:textAllCaps="false"/>
+
+
+            <Button
+                android:id="@+id/filter_ofType"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="过滤操作符之ofType()"
+                android:textAllCaps="false"/>
+
+            <Button
+                android:id="@+id/filter_skip_skipLast"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="过滤操作符之skip() / skipLast()"
+                android:textAllCaps="false"/>
+
+
+            <Button
+                android:id="@+id/filter_distinct_distinctUntilChanged"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="过滤操作符之distinct()/distinctUntilChanged()"
+                android:textAllCaps="false"/>
+
+            <Button
+                android:id="@+id/filter_take_takeLast"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="过滤操作符之take()/takeLast()"
+                android:textAllCaps="false"/>
+
+            <Button
+                android:id="@+id/filter_throttlefirst_throttlelast"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="过滤操作符之throttleFirst()/throttleLast()"
+                android:textAllCaps="false"/>
+
+
+            <Button
+                android:id="@+id/filter_sample"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="过滤操作符之sample()"
+                android:textAllCaps="false"/>
+
+            <Button
+                android:id="@+id/filter_throttleWithtimeout_debounce"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="过滤操作符之throttleWithTimeout()/debounce()"
+                android:textAllCaps="false"/>
+
+            <Button
+                android:id="@+id/filter_firstElement_lastElement"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="过滤操作符之firstElement()/lastElement()"
+                android:textAllCaps="false"/>
+
+
+            <Button
+                android:id="@+id/filter_elementAt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="过滤操作符之elementAt()"
+                android:textAllCaps="false"/>
+
+
+            <Button
+                android:id="@+id/filter_elementAtError"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="过滤操作符之elementAtError()"
+                android:textAllCaps="false"/>
+
+            <Button
+                android:id="@+id/filter_ignoreelements"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="过滤操作符之ignoreElements()"
+                android:textAllCaps="false"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:background="#f00"/>
+
+            <Button
+                android:id="@+id/condition_all"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="条件布尔操作符all()"
+                android:textAllCaps="false"/>
+
+
+            <Button
+                android:id="@+id/condition_takeWhile"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="条件布尔操作符takeWhile()"
+                android:textAllCaps="false"/>
+
+
+            <Button
+                android:id="@+id/condition_sikpWhile"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="条件布尔操作符skipWhile()"
+                android:textAllCaps="false"/>
+
+
+            <Button
+                android:id="@+id/condition_takeUntil"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="条件布尔操作符takeUntil()"
+                android:textAllCaps="false"/>
+
+            <Button
+                android:id="@+id/condition_skipUntil"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="条件布尔操作符skipUntil()"
+                android:textAllCaps="false"/>
+
+            <Button
+                android:id="@+id/condition_sequenceEqual"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="条件布尔操作符sequenceEqual()"
+                android:textAllCaps="false"/>
+
+
+            <Button
+                android:id="@+id/condition_contains"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="条件布尔操作符contains()"
+                android:textAllCaps="false"/>
+
+
+            <Button
+                android:id="@+id/condition_isEmpty"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="条件布尔操作符isEmpty()"
+                android:textAllCaps="false"/>
+
+
+            <Button
+                android:id="@+id/condition_amb"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="条件布尔操作符amb()"
+                android:textAllCaps="false"/>
+
+            <Button
+                android:id="@+id/condition_defaultIfEmpty"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="条件布尔操作符defaultIfEmpty()"
+                android:textAllCaps="false"/>
+
+        </LinearLayout>
+
+
+    </ScrollView>
+</LinearLayout>

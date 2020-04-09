@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:orientation="vertical"
+        android:layout_height="match_parent">
+
+        <Button
+            android:id="@+id/observerRxjavaDefaultWorkThread"
+            android:textAllCaps="false"
+            android:text="观察被观察者Observable观察者Observer的默认工作线程"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <Button
+            android:id="@+id/schedulers_once"
+            android:textAllCaps="false"
+            android:text="rxjava线程调度使用案例:\n使用一次subscribeOn()和一次observeOn()"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+        <Button
+            android:id="@+id/schedulers_twice_subscribeOn"
+            android:textAllCaps="false"
+            android:text="rxjava线程调度使用案例:\n使用两次subscribeOn()和一次observeOn()"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <Button
+            android:id="@+id/schedulers_twice_observeOn"
+            android:textAllCaps="false"
+            android:text="rxjava线程调度使用案例:\n使用一次subscribeOn()和两次observeOn()"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <Button
+            android:id="@+id/schedulers_trampoline"
+            android:textAllCaps="false"
+            android:text="rxjava线程调度使用之trampoline()线程"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+
+        <Button
+            android:id="@+id/schedulers_single"
+            android:textAllCaps="false"
+            android:text="rxjava线程调度使用之single()线程"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <Button
+         android:id="@+id/schedulers_demo"
+            android:textAllCaps="false"
+            android:text="rxjava线程调度器Schdulers的使用"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <Button
+            android:id="@+id/schedulers_retrofit"
+            android:textAllCaps="false"
+            android:text="rxjava结合retrofit请求网络同时实现线程的切换"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <Button
+            android:id="@+id/schedulers_deeplearn"
+            android:textAllCaps="false"
+            android:text="subscribeOn()和observeOn()的理解"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+
+</ScrollView>
