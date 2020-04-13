@@ -2,6 +2,7 @@ package com.example.frameproj;
 
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -12,6 +13,7 @@ import com.example.frameproj.base.BaseActivity;
 import com.example.frameproj.bean.LoginResponse;
 import com.example.frameproj.bean.RegisterResp;
 import com.example.frameproj.utils.ApiService;
+import com.yechaoa.yutils.LogUtil;
 
 import butterknife.BindView;
 import butterknife.OnClick;
@@ -19,6 +21,7 @@ import io.reactivex.Observable;
 import io.reactivex.ObservableSource;
 import io.reactivex.Observer;
 import io.reactivex.android.schedulers.AndroidSchedulers;
+
 import io.reactivex.disposables.Disposable;
 import io.reactivex.functions.Consumer;
 import io.reactivex.functions.Function;
@@ -73,56 +76,47 @@ public class MainActivity extends BaseActivity {
 
         //使用接口请求对象创建call对象
         Observable<RegisterResp> call = api.register(username, password, repassword);
+         call.subscribeOn(Schedulers.io())
+             .flatMap(new Function<RegisterResp, ObservableSource<LoginResponse>>() {
+            @Override
+            public ObservableSource<LoginResponse> apply(RegisterResp registerResp) throws Exception {
+              if (-1==registerResp.getErrorCode()){
+                  return Observable.error(new Throwable("用户名已经注册"));
+              }else if ( -1001==registerResp.getErrorCode()){
+                  return Observable.error(new Throwable("注册失败"));
+              }
 
-        call.subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
-               /* .doOnNext(new Consumer<RegisterResp>() {
-                    @Override
-                    public void accept(RegisterResp registerResp) throws Exception {
+                return api.login(username, password);
+            }
+        }).observeOn(AndroidSchedulers.mainThread())
+         .subscribe(new Observer<LoginResponse>() {
+             @Override
+             public void onSubscribe(Disposable d) {
 
-                                 if (0==registerResp.getErrorCode()){
-                                     Toast.makeText(MainActivity.this, "注册成功，即将为您进行自动登录操作", Toast.LENGTH_SHORT).show();
-                                 }else if (-1==registerResp.getErrorCode()){
-                                     Toast.makeText(MainActivity.this, "用户名已经被注册！", Toast.LENGTH_SHORT).show();
-                                     return;
-                                 }else {
-                                     Toast.makeText(MainActivity.this, "注册失败,请重试"+registerResp.getErrorCode(), Toast.LENGTH_SHORT).show();
-                                     return;
-                                 }
-                    }
-                })*/
-                .flatMap(new Function<RegisterResp, ObservableSource<LoginResponse>>() {
-                    @Override
-                    public ObservableSource<LoginResponse> apply(RegisterResp registerResp) throws Exception {
+             }
+
+             @Override
+             public void onNext(LoginResponse loginResponse) {
+                 Toast.makeText(MainActivity.this, "恭喜你登录成功", Toast.LENGTH_SHORT).show();
+             }
+
+             @Override
+             public void onError(Throwable e) {
+                 if ("注册失败".equals(e.getMessage())){
+                     Toast.makeText(MainActivity.this, "注册失败", Toast.LENGTH_SHORT).show();
+                 }else if (("用户名已经注册".equals(e.getMessage()))){
+                     Toast.makeText(MainActivity.this, "用户名已经注册", Toast.LENGTH_SHORT).show();
+                     }
+                 }
+
+             @Override
+             public void onComplete() {
+
+             }
+         });
 
 
 
-                        return api.login(username, password);
-                    }
-                })
-
-
-                .observeOn(Schedulers.io())
-              /*  .flatMap(new Function<RegisterResp, ObservableSource<LoginResponse>>() {
-                    @Override
-                    public ObservableSource<LoginResponse> apply(RegisterResp registerResp) throws Exception {
-                        return api.login(username, password);
-                    }
-                })*/
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new Consumer<LoginResponse>() {
-                    @Override
-                    public void accept(LoginResponse loginResponse) throws Exception {
-
-                        Toast.makeText(MainActivity.this, "loginResponse"+loginResponse.getData().toString(), Toast.LENGTH_SHORT).show();
-                        tvInfo.setText("登录用户名是:"+username+"密码是:"+password+"返回信息"+loginResponse.getData().toString());
-                    }
-                }, new Consumer<Throwable>() {
-                    @Override
-                    public void accept(Throwable throwable) throws Exception {
-                        Toast.makeText(MainActivity.this, "登录失败"+throwable, Toast.LENGTH_SHORT).show();
-                    }
-                });
     }
 
 

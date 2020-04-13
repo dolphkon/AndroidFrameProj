@@ -5,7 +5,7 @@ android {
     buildToolsVersion "29.0.3"
     defaultConfig {
         applicationId "com.example.frameproj"
-        minSdkVersion 18
+        minSdkVersion 19
         targetSdkVersion 29
         versionCode 1
         versionName "1.0"
@@ -52,6 +52,6 @@ dependencies {
     implementation 'com.squareup.retrofit2:adapter-rxjava2:2.4.0'
     //XUI
     implementation 'com.github.xuexiangjys:XUI:1.0.9'
-
+    implementation 'com.github.yechaoa:YUtils:3.0.2'
 
 }
