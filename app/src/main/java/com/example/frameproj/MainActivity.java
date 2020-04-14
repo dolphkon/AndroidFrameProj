@@ -1,8 +1,6 @@
 package com.example.frameproj;
 
-import android.os.Bundle;
 import android.text.TextUtils;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -12,14 +10,18 @@ import android.widget.Toast;
 import com.example.frameproj.base.BaseActivity;
 import com.example.frameproj.bean.LoginResponse;
 import com.example.frameproj.bean.RegisterResp;
-import com.example.frameproj.utils.ApiService;
+import com.example.frameproj.net.ApiService;
+import com.example.frameproj.net.Config;
+import com.example.frameproj.net.Retrofitclient;
 import com.yechaoa.yutils.LogUtil;
+import com.yechaoa.yutils.ToastUtil;
 
 import butterknife.BindView;
 import butterknife.OnClick;
 import io.reactivex.Observable;
 import io.reactivex.ObservableSource;
 import io.reactivex.Observer;
+import io.reactivex.Scheduler;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 
 import io.reactivex.disposables.Disposable;
@@ -46,6 +48,7 @@ public class MainActivity extends BaseActivity {
     private String username;
     private String password;
     private String repassword;
+    private ApiService apiService;
 
 
     @Override
@@ -55,7 +58,12 @@ public class MainActivity extends BaseActivity {
 
     @Override
     public void initData() {
-
+     apiService=new Retrofit.Builder()
+                .baseUrl(Config.BASE_URL)
+                .addConverterFactory(GsonConverterFactory.create())
+                .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
+                .build()
+                .create(ApiService.class);
 
     }
 
@@ -115,8 +123,6 @@ public class MainActivity extends BaseActivity {
              }
          });
 
-
-
     }
 
 
@@ -131,7 +137,8 @@ public class MainActivity extends BaseActivity {
                     Toast.makeText(this, "请输入完整信息", Toast.LENGTH_SHORT).show();
                 } else {
                     if (password.equals(repassword)) {
-                        login();
+//                        regisLogin(); // 原始注册登录方式
+                        login(); //  改进后的注册登录方式
                     } else {
                         Toast.makeText(this, "两次输入的密码不一致", Toast.LENGTH_SHORT).show();
                     }
@@ -140,5 +147,47 @@ public class MainActivity extends BaseActivity {
 
         }
     }
+
+
+   private void regisLogin(){
+       apiService.register(username,password,repassword)
+                  .subscribeOn(Schedulers.io())
+                  .observeOn(AndroidSchedulers.mainThread())
+                  .subscribe(new Consumer<RegisterResp>() {
+                      @Override
+                      public void accept(RegisterResp registerResp) throws Exception {
+                          LogUtil.d("registCode:"+registerResp.getErrorCode());
+                          if (-1==registerResp.getErrorCode()){
+                             ToastUtil.showToast("用户名已注册");
+                          }else {
+                              ToastUtil.showToast("注册成功。开始登录");
+                              originLogin();
+                          }
+                      }
+                  }, new Consumer<Throwable>() {
+                      @Override
+                      public void accept(Throwable throwable) throws Exception {
+                          ToastUtil.showToast("注册失败");
+                      }
+                  });
+   }
+
+   private void originLogin(){
+       apiService.login(username, password)
+               .subscribeOn(Schedulers.io())
+               .observeOn(AndroidSchedulers.mainThread())  //回到主线程去处理请求结果
+               .subscribe(new Consumer<LoginResponse>() {
+                   @Override
+                   public void accept(LoginResponse loginResponse) throws Exception {
+                       ToastUtil.showToast("登录成功");
+
+                   }
+               },new Consumer<Throwable>() {
+                   @Override
+                   public void accept(Throwable throwable) throws Exception {
+                       ToastUtil.showToast("登录失败");
+                   }
+               });
+   }
 
 }

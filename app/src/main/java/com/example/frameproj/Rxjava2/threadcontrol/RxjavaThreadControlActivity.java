@@ -23,9 +23,6 @@ import io.reactivex.disposables.Disposable;
 import io.reactivex.functions.Consumer;
 import io.reactivex.functions.Function;
 import io.reactivex.schedulers.Schedulers;
-import rx.internal.schedulers.NewThreadWorker;
-
-
 /**
  * Rxjava2的线程调度
  * */
@@ -81,8 +78,6 @@ public class RxjavaThreadControlActivity extends BaseActivity {
                 break;
             case R.id.schedulers_twice_observeOn:
                 schedulers_twice_observeOn();
-
-
                 break;
             case R.id.schedulers_trampoline:
                 schedulers_trampoline(schedulersTwiceSubscribeOn);
@@ -137,14 +132,6 @@ public class RxjavaThreadControlActivity extends BaseActivity {
 
                     }
                 });
-
-
-
-
-
-
-
-
     }
 
     /**：当其它排队的任务完成后，在当前线程排队开始执行，FIFO。

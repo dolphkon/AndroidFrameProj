@@ -1,8 +1,7 @@
-package com.example.frameproj.utils;
+package com.example.frameproj.net;
 
 import com.example.frameproj.bean.LoginResponse;
 import com.example.frameproj.bean.RegisterResp;
-
 
 import io.reactivex.Observable;
 import retrofit2.http.Field;
